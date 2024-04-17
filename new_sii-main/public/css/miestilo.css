@@ -1,0 +1,43 @@
+
+body {
+    background-image: url('../img/fondo_.jpg');
+    background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+    background-repeat: no-repeat; /* Evitar la repetición de la imagen */
+    background-attachment: fixed; /* Fijar la imagen de fondo para que no se desplace con el contenido */
+    background-position: center; /* Centrar la imagen de fondo */
+    margin: 0; /* Eliminar márgenes para el cuerpo del documento */
+    padding: 0; /* Eliminar relleno para el cuerpo del documento */
+    /*padding-bottom: 60px;*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.box {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4) ;
+}
+
+footer.footer {
+    background-color: rgba(255,255,255,1);
+    color: #000000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+    .box-principal {
+        max-width: 85%;
+        margin: auto;
+    }
+}
+
