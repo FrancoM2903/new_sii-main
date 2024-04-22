@@ -1,7 +1,3 @@
-<div>
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-</div>
-
 @extends('layouts.plantilla')
 @section('content')
     <div class="box">
