@@ -4,35 +4,26 @@ namespace App\Http\Controllers\Escolares;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Edificio;
+//use App\Models\Edificio;
 use App\Models\Salon;
-use Illuminate\Database\QueryException;
 
-class EdificioController extends Controller
-{
-    //
+class SalonController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
 
-    public function getEdificio() {
-        $edificios = Edificio::all();
-        $salones = Salon::all();
-        return view('escolares.edificio', compact('edificios','salones'));
-    }
-
-    public function createEdificio(Request $request) {
+    public function createSalon(Request $request) {
         try {
             $request->validate([
-                'txtEdificio' => 'required|string',
-                'txtDescripcion' => 'required|string',
+                'txtSalon' => 'required',
+                'selectEdificios' => 'required',
             ]);
 
             // Crea un nuevo plan
-            $edificio = new Edificio();
-            $edificio->nombre_edificio = $request->txtEdificio;
-            $edificio->descripcion = $request->txtDescripcion;
-            $edificio->save();
+            $salon = new Salon();
+            $salon->nombre_salon = $request->txtSalon;
+            $salon->edificio_id = $request->selectEdificios;
+            $salon->save();
 
             return back()->with("Correcto", "Edificio correctamente");
         } catch (QueryException $e) {
@@ -44,7 +35,7 @@ class EdificioController extends Controller
         }
     }
 
-    public function updateEdificio(Request $request, $id) {
+    /* public function updateSalon(Request $request, $id) {
         try {
 
             $edificio = Edificio::findOrFail($id);
@@ -63,7 +54,7 @@ class EdificioController extends Controller
         }
     }
 
-    public function deleteEdificio($id) {
+    public function deleteSalon($id) {
         //Hay que recibir como parametro el id del registro a eliminar
         try {
             // Buscamos el plan de estudio
@@ -76,5 +67,6 @@ class EdificioController extends Controller
             // Cualquier  error
             return back()->with("Incorrecto", "Error al eliminar el edificio");
         }
-    }
+    } */
+
 }

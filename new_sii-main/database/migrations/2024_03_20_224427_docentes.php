@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('ap_materno');
             $table->string('curp')->unique()->nullable(false);
             $table->string('email')->unique()->nullable(false);
+            $table->unsignedBigInteger('user_id');
+
+            /* $table->foreign('user_id')
+                ->references('id')->on('users'); */
         });
     }
 

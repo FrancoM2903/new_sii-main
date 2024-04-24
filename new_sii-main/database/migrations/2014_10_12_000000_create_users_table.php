@@ -20,6 +20,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        /* $user = User::create([
+            'name'=>'Departamento de Escolares',
+            'email'=>'escolares@sjuanrio.tecnm-mx',
+            'password'=>Hash::make('12345678')
+        ]); */
     }
 
     /**

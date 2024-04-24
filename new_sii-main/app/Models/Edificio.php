@@ -17,4 +17,9 @@ class Edificio extends Model
     // Indicar a Laravel que no maneje las marcas de tiempo
     public $timestamps = false;
 
+    //RELACIONES
+    public function salones() {
+        return $this -> hasMany(Salon::class);
+    }
+
 }

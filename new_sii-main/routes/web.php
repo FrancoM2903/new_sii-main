@@ -7,6 +7,7 @@ use App\Http\Controllers\Escolares\AlumnoController;
 use App\Http\Controllers\Escolares\PlanEstudioController;
 use App\Http\Controllers\Escolares\DocenteController;
 use App\Http\Controllers\Escolares\EdificioController;
+use App\Http\Controllers\Escolares\SalonController;
 
 Auth::routes();
 
@@ -35,7 +36,14 @@ Route::delete('/escolares/docente/delete/{id}', [DocenteController::class, 'dele
 Route::post('/escolares/docente/create', [DocenteController::class, 'createDocente'])->name('docenteCreate');
 
 // ****************** EDIFICIOS Y SALONES ******************
-Route::get('/escolares/edificio', [EdificioController::class, 'index'])->name('edificios');
+// ------------------------- EDIFICIOS -------------------------
+Route::get('/escolares/edificio', [EdificioController::class, 'getEdificio'])->name('edificios');
 Route::post('/escolares/edificio/create', [EdificioController::class, 'createEdificio'])->name('edificioCreate');
 Route::patch('/escolares/edificio/editar/{id}', [EdificioController::class, 'updateEdificio'])->name('edificioUpdate');
 Route::delete('/escolares/edificio/delete/{id}', [EdificioController::class, 'deleteEdificio'])->name('edificioDelete');
+
+// --------------------------- SALONES ---------------------------
+//Route::get('/escolares/edificio', [EdificioController::class, 'getEdificios'])->name('salonesMostrar');
+Route::post('/escolares/salon/create', [SalonController::class, 'createSalon'])->name('salonCreate');
+Route::patch('/escolares/salon/editar/{id}', [SalonController::class, 'updateSalon'])->name('salonUpdate');
+Route::delete('/escolares/salon/delete/{id}', [SalonController::class, 'deleteSalon'])->name('salonDelete');
