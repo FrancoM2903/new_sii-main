@@ -30,6 +30,7 @@
     </div>
 
     <div class="columns">
+        {{-- ================================================= EDIFICIOS ================================================= --}}
         <div class="column">
             <div class="box">
                 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
@@ -97,7 +98,7 @@
                 </tbody> 
                 </table>
         
-                <!--Modal para crear un nuevo plan -->
+                <!--Modal para crear un nuevo edificio -->
                 <div id="modal-nvo-edificio" class="modal">
                     <div class="modal-background"></div>
                 
@@ -149,6 +150,7 @@
             </div>  
         </div>
 
+        {{-- ================================================= SALONES ================================================= --}}
         <div class="column">
             <div class="box">
                 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
@@ -166,7 +168,7 @@
                             <td>{{ $salon->edificio->nombre_edificio }}</td>
                             <td>
                                 <div class="field is-grouped has-text-is-centered">
-                                    <button class="button is-warning js-modal-trigger" data-target="modal-salon{{ $salon->id }}">
+                                    <button class="button is-warning js-modal-trigger" data-target="modal-salon-{{ $salon->id }}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                     <form action="{{ route('salonDelete', $salon->id) }}" method="POST">
@@ -178,7 +180,7 @@
                                     </form>
                                 </div>
                                 
-                                <div id="modal-{{ $salon->id }}" class="modal">
+                                <div id="modal-salon-{{ $salon->id }}" class="modal">
                                     <div class="modal-background"></div>
     
                                     <div class="modal-content">
@@ -198,9 +200,11 @@
                                                     <label class="label">Edificio:</label>
                                                     <div class="control">
                                                         <div class="select">
-                                                            <select>
-                                                              <option>Select dropdown</option>
-                                                              <option>With options</option>
+                                                            <select name="selectEdificios">
+                                                                <option value="">Seleccionar</option>
+                                                                @foreach ($edificios as $edificio)
+                                                                    <option value="{{ $edificio->id }}">{{ $edificio->nombre_edificio }}</option>
+                                                                @endforeach
                                                             </select>
                                                           </div>
                                                     </div>
@@ -220,7 +224,7 @@
                 </tbody> 
                 </table>
         
-                <!--Modal para crear un nuevo plan -->
+                <!--Modal para crear un nuevo salon -->
                 <div id="modal-nvo-salon" class="modal">
                     <div class="modal-background"></div>
                 

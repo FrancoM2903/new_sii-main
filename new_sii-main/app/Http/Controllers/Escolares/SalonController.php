@@ -35,18 +35,18 @@ class SalonController extends Controller {
         }
     }
 
-    /* public function updateSalon(Request $request, $id) {
+    public function updateSalon(Request $request, $id) {
         try {
 
-            $edificio = Edificio::findOrFail($id);
-            $edificio->nombre_edificio = $request->txtEdificio;
-            $edificio->descripcion = $request->txtDescripcion;
-            $edificio->save();
-            return back()->with("Correcto", "Edificio modificado correctamente");
+            $salon = Salon::findOrFail($id);
+            $salon->nombre_salon = $request->txtSalon;
+            $salon->edificio_id = $request->selectEdificios;
+            $salon->save();
+            return back()->with("Correcto", "Salon modificado correctamente");
         } catch (QueryException $e) {
             // Verificar si el error es debido a una restricción de unicidad
             if ($e->errorInfo[1] == 1062) {
-                return back()->with("Incorrecto", "Error, el edificio ya existe");
+                return back()->with("Incorrecto", "Error, el salon ya existe");
             }
 
             // Si no es una restricción de unicidad, puedes manejar otros tipos de errores aquí
@@ -58,15 +58,15 @@ class SalonController extends Controller {
         //Hay que recibir como parametro el id del registro a eliminar
         try {
             // Buscamos el plan de estudio
-            $edificio = Edificio::findOrFail($id);
+            $salon = Salon::findOrFail($id);
             // Se elimina
-            $edificio->delete();
+            $salon->delete();
 
-            return back()->with("Correcto", "Se ha eliminado el edificio correctamente");
+            return back()->with("Correcto", "Se ha eliminado el salon correctamente");
         } catch (QueryException $e) {
             // Cualquier  error
-            return back()->with("Incorrecto", "Error al eliminar el edificio");
+            return back()->with("Incorrecto", "Error al eliminar el salon");
         }
-    } */
+    } 
 
 }
