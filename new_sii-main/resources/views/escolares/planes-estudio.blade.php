@@ -25,71 +25,88 @@
             </div>
         @endif
 
-        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-                <tr>
-                    <th>Plan de Estudio</th>
-                    <th>Carrera</th>
-                    <th class="has-text-centered">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($planes as $item)
-                    <tr>
-                        <td>{{ $item->clave_plan_estudio }}</td>
-                        <td>{{ $item->carrera }}</td>
-                        <td>
-                            <div class="field is-grouped">
-                                <button class="button is-warning js-modal-trigger" data-target="modal-{{ $item->id }}">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <form action="{{ route('PlanesEstudioEliminar', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este plan de estudios?')">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </form>
-                            </div>
-
-                            <div id="modal-{{ $item->id }}" class="modal">
-                                <div class="modal-background"></div>
-
-                                <div class="modal-content">
-                                    <div class="box">
-                                        <p class="title is-5 has-text-centered">Modificar Plan de Estudio</p>
-                                        <form method="POST" action="{{ route('planEstudioUpdate', $item->id) }}">
-                                            @csrf
-                                            @method('PATCH')
-                                            <div class="field">
-                                                <label class="label">Clave del Plan de Estudios:</label>
-                                                <div class="control">
-                                                    <input class="input" type="text" name="txtClave"
-                                                        value="{{ $item->clave_plan_estudio }}">
+        <div class="columns">
+            <div class="column">
+                <div class="box">
+                    <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Plan de Estudio</th>
+                                <th>Carrera</th>
+                                <th class="has-text-centered">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($planes as $item)
+                                <tr>
+                                    <td>{{ $item->clave_plan_estudio }}</td>
+                                    <td>{{ $item->carrera }}</td>
+                                    <td>
+                                        <div class="field is-grouped">
+                                            <button class="button is-warning js-modal-trigger" data-target="modal-{{ $item->id }}">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <form action="{{ route('PlanesEstudioEliminar', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este plan de estudios?')">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+            
+                                        <div id="modal-{{ $item->id }}" class="modal">
+                                            <div class="modal-background"></div>
+            
+                                            <div class="modal-content">
+                                                <div class="box">
+                                                    <p class="title is-5 has-text-centered">Modificar Plan de Estudio</p>
+                                                    <form method="POST" action="{{ route('planEstudioUpdate', $item->id) }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <div class="field">
+                                                            <label class="label">Clave del Plan de Estudios:</label>
+                                                            <div class="control">
+                                                                <input class="input" type="text" name="txtClave"
+                                                                    value="{{ $item->clave_plan_estudio }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="field">
+                                                            <label class="label">Nombre de la carrera:</label>
+                                                            <div class="control">
+                                                                <input class="input" type="text" name="txtCarrera"
+                                                                value="{{ $item->carrera }}">
+                                                            </div>
+                                                        </div>
+            
+                                                        <div class="has-text-centered">
+                                                            <button class="button is-primary" type="submit">Guardar</a>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                            <div class="field">
-                                                <label class="label">Nombre de la carrera:</label>
-                                                <div class="control">
-                                                    <input class="input" type="text" name="txtCarrera"
-                                                    value="{{ $item->carrera }}">
-                                                </div>
-                                            </div>
+            
+                                            <button class="modal-close is-large" aria-label="close"></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table> {{-- TABLA DE PLANES DE ESTUDIOS --}}
+                </div> {{-- BOX DE COLUMN 1 --}}
 
-                                            <div class="has-text-centered">
-                                                <button class="button is-primary" type="submit">Guardar</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+            </div> {{-- COLUMN 1 --}}
 
-                                <button class="modal-close is-large" aria-label="close"></button>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+            <div class="column">
+                <div class="box">
+                    <p>Holi uwu</p>
+                </div> {{-- BOX DE COLUMN 2 --}}
+
+            </div> {{-- COLUMN 2 --}}
+
+        </div> {{-- COLUMNS --}}
+
+
 
         <!--Modal para crear un nuevo plan -->
         <div id="modal-nvo-plan" class="modal">

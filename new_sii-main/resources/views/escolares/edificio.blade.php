@@ -54,7 +54,7 @@
                                     <form action="{{ route('edificioDelete', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="button is-danger" x onclick="return confirm('¿Estás seguro de que quieres eliminar el edificio?')">
+                                        <button type="submit" class="button is-danger" {{ $item->salones->count() > 0 ? 'disabled':'' }} onclick="return confirm('¿Estás seguro de que quieres eliminar el edificio?')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
