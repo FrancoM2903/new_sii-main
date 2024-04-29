@@ -29,7 +29,7 @@
                 <div class="box">
                     <h1 class="title is-6 "><i class="fa-solid fa-building"></i> Edificios y Salones</h1>
                     <p>Ver, crear, editar alumnos</p><br>
-                    <a  class="button is-info" href="{{route('escolaresAlumnos')}}">Acceder</a>
+                    <a  class="button is-info" href="{{route('escolaresEdificios')}}">Acceder</a>
                 </div>
             </div>
             <div class="column is-4-desktop is-6-mobile">

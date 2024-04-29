@@ -37,7 +37,7 @@ Route::post('/escolares/docente/create', [DocenteController::class, 'createDocen
 
 // ****************** EDIFICIOS Y SALONES ******************
 // ------------------------- EDIFICIOS -------------------------
-Route::get('/escolares/edificio', [EdificioController::class, 'getEdificio'])->name('edificios');
+Route::get('/escolares/edificio', [EdificioController::class, 'getEdificio'])->name('escolaresEdificios');
 Route::post('/escolares/edificio/create', [EdificioController::class, 'createEdificio'])->name('edificioCreate');
 Route::patch('/escolares/edificio/editar/{id}', [EdificioController::class, 'updateEdificio'])->name('edificioUpdate');
 Route::delete('/escolares/edificio/delete/{id}', [EdificioController::class, 'deleteEdificio'])->name('edificioDelete');

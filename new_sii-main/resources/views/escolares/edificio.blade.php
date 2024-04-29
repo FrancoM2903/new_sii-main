@@ -54,7 +54,7 @@
                                     <form action="{{ route('edificioDelete', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar el edificio?')">
+                                        <button type="submit" class="button is-danger" x onclick="return confirm('¿Estás seguro de que quieres eliminar el edificio?')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
@@ -201,9 +201,8 @@
                                                     <div class="control">
                                                         <div class="select">
                                                             <select name="selectEdificios">
-                                                                <option value="">Seleccionar</option>
                                                                 @foreach ($edificios as $edificio)
-                                                                    <option value="{{ $edificio->id }}">{{ $edificio->nombre_edificio }}</option>
+                                                                    <option value="{{ $edificio->id }}" {{$edificio->id == $salon->edificio_id ? 'selected' : '' }}>{{ $edificio->nombre_edificio }}</option>
                                                                 @endforeach
                                                             </select>
                                                           </div>
