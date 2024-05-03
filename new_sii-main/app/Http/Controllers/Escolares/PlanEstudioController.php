@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Escolares;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PlanEstudio;
+use App\Models\Especialidad;
 
 use Illuminate\Database\QueryException;
 
@@ -18,10 +19,8 @@ class PlanEstudioController extends Controller
     public function index()
     {
         $planes = PlanEstudio::all();
-        /* $test = 'Hola Mundo';
-        $name = 'Jaime'; */
-        //return view('escolares.planes-estudio', ['test' => $test]);
-        return view('escolares.planes-estudio', compact('planes'));
+        $especialidades = Especialidad::all();
+        return view('escolares.planes-estudio', compact('planes','especialidades'));
     }
 
     public function updatePlanEstudio(Request $request, $id)

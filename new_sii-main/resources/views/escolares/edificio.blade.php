@@ -34,14 +34,14 @@
         <div class="column">
             <div class="box">
                 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Edificio</th>
-                        <th>Descripción</th>
-                        <th class="has-text-centered">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
+                    <thead>
+                        <tr>
+                            <th>Edificio</th>
+                            <th>Descripción</th>
+                            <th class="has-text-centered">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     @foreach ($edificios as $item)
                         <tr>
                             <td>{{ $item->nombre_edificio }}</td>
@@ -95,7 +95,7 @@
                             </td>
                         </tr>
                     @endforeach
-                </tbody> 
+                    </tbody> 
                 </table>
         
                 <!--Modal para crear un nuevo edificio -->
@@ -154,14 +154,14 @@
         <div class="column">
             <div class="box">
                 <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Salon</th>
-                        <th>Edificio</th>
-                        <th class="has-text-centered">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
+                    <thead>
+                        <tr>
+                            <th>Salon</th>
+                            <th>Edificio</th>
+                            <th class="has-text-centered">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     @foreach ($salones as $salon)
                         <tr>
                             <td>{{ $salon->nombre_salon }}</td>
