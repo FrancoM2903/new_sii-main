@@ -74,7 +74,7 @@ class DocenteController extends Controller
                 // los 'txt' vienen de la vista
             ]);
 
-            $fecha_nacimiento = substr($request->txtCurp,4,6);
+            $fecha_nacimiento = substr($request->txtCURP,4,6);
             echo($fecha_nacimiento);
 
             $user = User::create([
