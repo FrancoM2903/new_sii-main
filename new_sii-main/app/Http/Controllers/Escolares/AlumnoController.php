@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Escolares;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Alumno;
+use App\Models\User;
+/* use App\Models\User;
+use App\Models\User;
+use App\Models\User; */
 
 class AlumnoController extends Controller
 {
@@ -12,7 +17,7 @@ class AlumnoController extends Controller
         $this->middleware('auth');
     }
 
-    public function index (){
+    public function getAlumno (){
         return view('escolares.alumno');
     }
 

@@ -9,11 +9,11 @@ class Docente extends Model
 {
     use HasFactory;
      // Indicar a Laravel que no maneje las marcas de tiempo
-     public $timestamps = false;
+    public $timestamps = false;
      
-     protected $table = 'docentes';
+    protected $table = 'docentes';
 
-     public function user(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

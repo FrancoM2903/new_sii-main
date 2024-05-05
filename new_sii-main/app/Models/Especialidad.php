@@ -18,7 +18,8 @@ class Especialidad extends Model
     }
 
     protected $fillable = [
-        'clave_plan_estudio',
-        'carrera',
+        'clave_especialidad',
+        'especilidad',
+        'plan_estudio_id',
     ];
 }

@@ -16,6 +16,7 @@ class PlanEstudio extends Model
         'carrera',
     ];
 
+    
     public function especialidades() {
         return $this -> hasMany(Especialidad::class);
     }

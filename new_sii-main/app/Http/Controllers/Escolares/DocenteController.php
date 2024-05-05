@@ -91,6 +91,8 @@ class DocenteController extends Controller
             $docentes->ap_materno = $request->txtApMaterno;
             $docentes->curp = $request->txtCURP;
             $docentes->email = $request->txtEmail;
+            //asignando el id a llave foranea
+            $docentes->user_id = $user->id;
 
             $docentes->save(); //Guardamos
 

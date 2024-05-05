@@ -14,6 +14,7 @@ return new class extends Migration
     {
         $role1 = Role::create(['name' => 'escolares']);
         $role2 = Role::create(['name' =>'docente']);
+        $role3 = Role::create(['name' =>'alumno']);
     }
 
     /**
