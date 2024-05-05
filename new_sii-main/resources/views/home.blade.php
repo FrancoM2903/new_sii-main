@@ -4,6 +4,8 @@
     {{-- <h1 class="title is-4">Estamos en el home</h1> --}}
     <div class="box box-principal">
         <div class="columns is-multiline is-mobile">
+
+            @hasrole('escolares')
             <div class="column is-4-desktop is-6-mobile">
                 <div class="box">
                     <h1 class="title is-6 "><i class="fa-solid fa-users"></i> Alumnos</h1>
@@ -32,6 +34,9 @@
                     <a  class="button is-info" href="{{route('escolaresEdificios')}}">Acceder</a>
                 </div>
             </div>
+            @endhasrole
+
+            @hasrole('docente')
             <div class="column is-4-desktop is-6-mobile">
                 <div class="box">
                     <h1 class="title is-6 "><i class="fa-solid fa-book-open"></i> Materias</h1>
@@ -53,6 +58,7 @@
                     <a  class="button is-info" href="{{route('escolaresAlumnos')}}">Acceder</a>
                 </div>
             </div>
+            @endhasrole
         </div>
     </div>
 @endsection

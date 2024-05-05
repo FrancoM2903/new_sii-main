@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Escolares;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Docente;
+use App\Models\User;
 
 class DocenteController extends Controller
 {
@@ -71,6 +74,15 @@ class DocenteController extends Controller
                 // los 'txt' vienen de la vista
             ]);
 
+            $fecha_nacimiento = substr($request->txtCurp,4,6);
+            echo($fecha_nacimiento);
+
+            $user = User::create([
+                'name' => $request->txtApPaterno.' '.$request->txtApMaterno.' '.$request->txtNombre,
+                'email' => $request->txtEmail,
+                'password' => Hash::make('Tecsj+'.$fecha_nacimiento),
+            ]);
+
             // Crea un nuevo plan
             $docentes = new Docente();
             $docentes->rfc = $request->txtRFC;
@@ -82,7 +94,10 @@ class DocenteController extends Controller
 
             $docentes->save(); //Guardamos
 
+            $user->assignRole('docente');
+
             return back()->with("Correcto", "Docente agregado correctamente");
+            
         } catch (QueryException $e) {
             if ($e->errorInfo[1] == 1062) {
                 return back()->with("Incorrecto", "ERROR - Ese RFC ya existe");

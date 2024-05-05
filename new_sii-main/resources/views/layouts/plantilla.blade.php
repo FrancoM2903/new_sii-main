@@ -38,15 +38,25 @@
 
             </div>
             <div class="navbar-end">
-                <div class="navbar-item">
-                    {{-- <button id="toggleButton" class="button">Cambiar Modo</button> --}}
-                    <div class="buttons">
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {{ Auth::user()->name }}
+                    </a>
+                
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            <i class="fas fa-key"></i>&nbsp;
+                            Cambiar contraseña
+                        </a>
+                        <a class="navbar-item" 
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="fas fa-power-off"></i>&nbsp;
+                            Salir
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                            <button class="button is-danger is-outlined" type="submit">
-                                <strong>Cerrar sesión</strong>
-                            </button>
                         </form>
+                
                     </div>
                 </div>
             </div>

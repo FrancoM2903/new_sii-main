@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('docentes', function (Blueprint $table) {
             $table->id(); //integer, autoincrement, primary key
-            $table->string('rfc',15)->unique(); 
+            $table->string('rfc',13)->unique(); 
             $table->string('nombre')->nullable(false);
             $table->string('ap_paterno')->nullable(false);
             $table->string('ap_materno');
-            $table->string('curp')->unique()->nullable(false);
+            $table->string('curp',18)->unique()->nullable(false);
             $table->string('email')->unique()->nullable(false);
-            /* $table->unsignedBigInteger('user_id'); */
+           
+            
 
             /* $table->foreign('user_id')
                 ->references('id')->on('users'); */

@@ -124,7 +124,7 @@
                                             <form action="{{ route('especialidadDelete', $especialidad->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta especialidad?')">
+                                                <button type="submit" class="button is-danger" {{-- $especialidad->especialidsades->count() > 0 ? 'disabled':'' --}} onclick="return confirm('¿Estás seguro de que quieres eliminar esta especialidad?')">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </button>
                                             </form>
