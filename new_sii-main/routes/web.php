@@ -23,9 +23,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['role:escolares']], function () {
 
-	Route::get('/escolares/alumnos', [AlumnoController::class, 'index'])->name('escolaresAlumnos');
-    Route::get('/escolares/alumnos/alta', [AlumnoController::class, 'altaAlumno'])->name('escolaresAlumnosAlta');
-    Route::post('/escolares/alumnos/crear', [AlumnoController::class, 'crearAlumno'])->name('escolaresAlumnosCrear');
+	Route::get('/escolares/alumnos', [AlumnoController::class, 'getAlumno'])->name('escolaresAlumnos');
+    Route::post('/escolares/alumnos/create', [AlumnoController::class, 'createAlumno'])->name('alumnoCreate');
+    Route::patch('/escolares/alumnos/editar/{id}', [AlumnoController::class, 'updateAlumno'])->name('alumnoUpdate');
+    Route::delete('/escolares/alumnos/delete/{id}', [AlumnoController::class, 'deleteAlumno'])->name('alumnoDelete');
 
     // ****************** DOCENTES ******************
     Route::get('/escolares/docente', [DocenteController::class, 'index'])->name('escolaresDocente');
@@ -48,7 +49,7 @@ Route::group(['middleware' => ['role:escolares']], function () {
 
 });
 
-Route::group(['middleware' => ['role:escolares']], function () {
+Route::group(['middleware' => ['role:docente']], function () {
     // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
     // ------------------------- PLANES DE ESTUDIO -------------------------
     Route::get('/escolares/planes_estudio', [PlanEstudioController::class, 'index'])->name('escolaresPlanesEstudio');
