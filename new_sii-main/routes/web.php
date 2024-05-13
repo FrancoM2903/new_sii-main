@@ -9,6 +9,9 @@ use App\Http\Controllers\Escolares\DocenteController;
 use App\Http\Controllers\Escolares\EdificioController;
 use App\Http\Controllers\Escolares\SalonController;
 use App\Http\Controllers\Escolares\EspecialidadController;
+use App\Http\Controllers\Escolares\MateriaController;
+use App\Http\Controllers\Escolares\PeriodoController;
+use App\Http\Controllers\Escolares\MateriaPlanEstudioController;
 
 Auth::routes();
 
@@ -18,15 +21,14 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 
 Route::group(['middleware' => ['role:escolares']], function () {
 
+    // ****************** ALUMNOS ******************
 	Route::get('/escolares/alumnos', [AlumnoController::class, 'getAlumno'])->name('escolaresAlumnos');
     Route::post('/escolares/alumnos/create', [AlumnoController::class, 'createAlumno'])->name('alumnoCreate');
     Route::patch('/escolares/alumnos/editar/{id}', [AlumnoController::class, 'updateAlumno'])->name('alumnoUpdate');
-    Route::delete('/escolares/alumnos/delete/{id}', [AlumnoController::class, 'deleteAlumno'])->name('alumnoDelete');
+    Route::delete('/escolares/alumnos/delete/{id}', [AlumnoController::class, ' '])->name('alumnoDelete');
 
     // ****************** DOCENTES ******************
     Route::get('/escolares/docente', [DocenteController::class, 'index'])->name('escolaresDocente');
@@ -42,14 +44,19 @@ Route::group(['middleware' => ['role:escolares']], function () {
     Route::delete('/escolares/edificio/delete/{id}', [EdificioController::class, 'deleteEdificio'])->name('edificioDelete');
 
     // --------------------------- SALONES ---------------------------
-    //Route::get('/escolares/edificio', [EdificioController::class, 'getEdificios'])->name('salonesMostrar');
     Route::post('/escolares/salon/create', [SalonController::class, 'createSalon'])->name('salonCreate');
     Route::patch('/escolares/salon/editar/{id}', [SalonController::class, 'updateSalon'])->name('salonUpdate');
     Route::delete('/escolares/salon/delete/{id}', [SalonController::class, 'deleteSalon'])->name('salonDelete');
 
+    // ------------------------- PERIODOS -------------------------
+    Route::get('/escolares/periodo', [PeriodoController::class, 'getPeriodos'])->name('escolaresPeriodos');
+    Route::post('/escolares/periodo/create', [PeriodoController::class, 'createPeriodo'])->name('periodoCreate');
+    Route::patch('/escolares/periodo/editar/{id}', [PeriodoController::class, 'updatePeriodo'])->name('periodoUpdate');
+    Route::delete('/escolares/periodo/delete/{id}', [PeriodoController::class, 'deletePeriodo'])->name('periodoDelete');
+
 });
 
-Route::group(['middleware' => ['role:docente']], function () {
+Route::group(['middleware' => ['role:docente|escolares']], function () {
     // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
     // ------------------------- PLANES DE ESTUDIO -------------------------
     Route::get('/escolares/planes_estudio', [PlanEstudioController::class, 'index'])->name('escolaresPlanesEstudio');
@@ -61,5 +68,18 @@ Route::group(['middleware' => ['role:docente']], function () {
     Route::post('/escolares/especialidad/create', [EspecialidadController::class, 'createEspecialidad'])->name('especialidadCreate');
     Route::patch('/escolares/especialidad/editar/{id}', [EspecialidadController::class, 'updateEspecialidad'])->name('especialidadUpdate');
     Route::delete('/escolares/especialidad/delete/{id}', [EspecialidadController::class, 'deleteEspecialidad'])->name('especialidadDelete');
+
+    // ------------------------- MATERIAS POR PLAN DE ESTUDIO -------------------------
+    Route::get('/escolares/planes_estudio/materia/{id}', [MateriaPlanEstudioController::class, 'getMateriasPlan'])->name('escolaresMateriaPlanEstudio');
+    Route::post('/escolares/periodo/create/{idPlan}', [MateriaPlanEstudioController::class, 'createMateriaPlanEstudio'])->name('materiaPlanEstudioCreate');
+    Route::delete('/escolares/periodo/delete/{idPlan}/{idMateria}', [MateriaPlanEstudioController::class, 'deleteMateriaPlanEstudio'])->name('materiaPlanEstudioDelete');
+});
+
+Route::group(['middleware' => ['role:div_estudios|escolares']], function () {
+    // ------------------------- MATERIAS -------------------------
+    Route::get('/escolares/materia', [MateriaController::class, 'getMaterias'])->name('escolaresMaterias');
+    Route::post('/escolares/materia/create', [MateriaController::class, 'createMateria'])->name('materiaCreate');
+    Route::patch('/escolares/materia/editar/{id}', [MateriaController::class, 'updateMateria'])->name('materiaUpdate');
+    Route::delete('/escolares/materia/delete/{id}', [MateriaController::class, 'deleteMateria'])->name('materiaDelete');
 });
 

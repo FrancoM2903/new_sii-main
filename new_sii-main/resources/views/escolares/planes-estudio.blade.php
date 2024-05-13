@@ -56,6 +56,11 @@
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </button>
                                             </form>
+                                            <form action="{{ route('escolaresMateriaPlanEstudio', $item->id) }}" method="GET">
+                                                <button type="submit" class="button is-info" title="Ver Materias">
+                                                    <i class="fa-solid fa-book"></i>
+                                                </button>
+                                            </form>
                                         </div>
             
                                         <div id="modal-{{ $item->id }}" class="modal">

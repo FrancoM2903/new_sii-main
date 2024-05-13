@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Escolares;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 use App\Models\Docente;
 use App\Models\User;
 

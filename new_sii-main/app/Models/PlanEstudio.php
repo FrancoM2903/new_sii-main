@@ -20,4 +20,12 @@ class PlanEstudio extends Model
     public function especialidades() {
         return $this -> hasMany(Especialidad::class);
     }
+
+    public function alumnos() {
+        return $this -> hasMany(Alumno::class);
+    }
+
+    public function materias() {
+        return $this->belongsToMany(Materia::class);
+    }
 }

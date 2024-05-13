@@ -28,6 +28,12 @@ return new class extends Migration
             'password' => Hash::make('12345678'),
         ]);
 
+        $user = User::create([
+            'name' => 'Division de Estudios Profesionales',
+            'email' => 'divisionestudiosp@sjuanrio.tecnm.mx',
+            'password' => Hash::make('12345678'),
+        ]);
+
         /* Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

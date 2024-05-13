@@ -45,9 +45,9 @@
                         <td>{{ $alumno->ap_paterno . ' ' . $alumno->ap_materno . ' ' . $alumno->nombre}}</td>
                         <td>{{ $alumno->curp }}</td>
                         <td>{{ $alumno->semestre }}</td>
-                        <td>{{ $alumno->plan_estudio_id }}</td>
-                        <td>{{ $alumno->estatus_id }}</td>
-                        <td>{{ $alumno->tipo_alumno_id }}</td>
+                        <td>{{ $alumno->planEstudio->carrera }}</td>
+                        <td>{{ $alumno->estatus->nombre_estatus }}</td>
+                        <td>{{ $alumno->tipoAlumno->nombre_tipo }}</td>
                         <td> {{-- botones --}}
                             <div class="field is-grouped">
                                 {{-- Buton de Editar --}}
