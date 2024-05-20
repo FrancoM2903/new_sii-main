@@ -67,64 +67,6 @@
                                             @csrf
                                             @method('PATCH')
                                             <div class="field">
-                                                <label class="label">Año:</label>
-                                                <div class="control">
-                                                    <div class="select">
-                                                        <select name="selectAnioPeriUp">
-                                                            <option value="20" 
-                                                                {{-- selectAnioPeriUp == '20' ? 'selected' : ''--}}>
-                                                                2020
-                                                            </option>
-                                                            <option value="21" 
-                                                                {{-- selectAnioPeriUp == '21' ? 'selected' : ''--}}>
-                                                                2021
-                                                            </option>
-                                                            <option value="22" 
-                                                                {{-- selectAnioPeriUp == '22' ? 'selected' : ''--}}>
-                                                                2022
-                                                            </option>
-                                                            <option value="23" 
-                                                                {{-- selectAnioPeriUp == '23' ? 'selected' : ''--}}>
-                                                                2023
-                                                            </option>
-                                                            <option value="24" 
-                                                                {{-- selectAnioPeriUp == '24' ? 'selected' : ''--}}>
-                                                                2024
-                                                            </option>
-                                                            <option value="25" 
-                                                                {{-- selectAnioPeriUp == '25' ? 'selected' : ''--}}>
-                                                                2025
-                                                            </option>
-                                                            <option value="26" 
-                                                                {{-- selectAnioPeriUp == '26' ? 'selected' : ''--}}>
-                                                                2026
-                                                            </option>
-                                                        </select>
-                                                      </div>
-                                                </div>
-                                            </div>
-                                            <div class="field">
-                                                <label class="label">Periodo:</label>
-                                                <div class="control">
-                                                    <div class="select">
-                                                        <select name="selectPeriodoPerUp">
-                                                            <option value="1" 
-                                                                {{-- $edificio->id == $salon->edificio_id ? 'selected' : '' --}}>
-                                                                Enero - Junio
-                                                            </option>
-                                                            <option value="2" 
-                                                                {{-- $edificio->id == $salon->edificio_id ? 'selected' : '' --}}>
-                                                                Agosto - Diciembre
-                                                            </option>
-                                                            <option value="3" 
-                                                                {{-- $edificio->id == $salon->edificio_id ? 'selected' : '' --}}>
-                                                                Verano
-                                                            </option>
-                                                        </select>
-                                                      </div>
-                                                </div>
-                                            </div>
-                                            <div class="field">
                                                 <label class="label">Estatus:</label>
                                                 <div class="control">
                                                     <div class="select">

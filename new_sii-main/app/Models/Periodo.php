@@ -12,4 +12,14 @@ class Periodo extends Model
     public $timestamps = false;
      
     protected $table = 'periodos';
+
+    protected $fillable = [
+        'clave_periodo',
+        'nombre_periodo',
+        'estatus',
+    ];
+
+    public function grupos(){
+        return $this->hasMany(Grupo::class);
+    }
 }

@@ -28,4 +28,8 @@ class PlanEstudio extends Model
     public function materias() {
         return $this->belongsToMany(Materia::class);
     }
+
+    public function grupos(){
+        return $this->hasMany(Grupo::class);
+    }
 }

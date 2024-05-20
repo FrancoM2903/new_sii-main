@@ -43,7 +43,8 @@ class PlanEstudioController extends Controller
             }
 
             // Si no es una restricción de unicidad, puedes manejar otros tipos de errores aquí
-            return back()->with("Incorrecto", "Error desconocido");
+            return back()->with("Incorrecto", "Error desconocido: " . $e->getMessage() . " (Código: " . $e->errorInfo[1] . ")");
+
         }
     }
 

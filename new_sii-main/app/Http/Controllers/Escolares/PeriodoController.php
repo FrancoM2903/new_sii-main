@@ -57,17 +57,17 @@ class PeriodoController extends Controller {
         try {
 
             if ($request->selectPeriodoPer == 1) {
-                $perio = "Enero - Junio";
+                $period = "Enero - Junio";
             } elseif ($request->selectPeriodoPer == 2) {
-                $perio = "Agosto - Diciembre";
+                $period = "Agosto - Diciembre";
             } elseif ($request->selectPeriodoPer == 3) {
-                $perio = "Verano";
+                $period = "Verano";
             }
 
             // Crea un nuevo plan
             $periodo = Periodo::findOrFail($id);
-            $periodo->clave_periodo = $request->selectAnioPeriUp.'/'.$request->selectPeriodoPerUp;
-            $periodo->nombre_periodo = $perio.' 20'.$request->selectAnioPeriUp;
+            //$periodo->clave_periodo = $request->selectAnioPeriUp.'/'.$request->selectPeriodoPerUp;
+            //$periodo->nombre_periodo = $period.' 20'.$request->selectAnioPeriUp;
             $periodo->estatus = $request->selectEstatusPeriUp;
             $periodo->save();
 

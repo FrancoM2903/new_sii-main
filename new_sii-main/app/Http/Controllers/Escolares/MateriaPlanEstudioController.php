@@ -25,8 +25,8 @@ class MateriaPlanEstudioController extends Controller
     public function createMateriaPlanEstudio(Request $request, $idPlan) {
         try {
             
-            $planEstudio = PlanEstudio::find($idPlan);
-            $planEstudio->materias()->attach($request->selectMatPlan);
+            $planEstudio = PlanEstudio::find($idPlan); //busca planes de estudio
+            $planEstudio->materias()->attach($request->selectMatPlan); //se agrega 
             
             return back()->with("Correcto", "Materia agregada correctamente");
         

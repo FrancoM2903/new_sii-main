@@ -11,6 +11,7 @@ use App\Http\Controllers\Escolares\SalonController;
 use App\Http\Controllers\Escolares\EspecialidadController;
 use App\Http\Controllers\Escolares\MateriaController;
 use App\Http\Controllers\Escolares\PeriodoController;
+use App\Http\Controllers\Escolares\GrupoController;
 use App\Http\Controllers\Escolares\MateriaPlanEstudioController;
 
 Auth::routes();
@@ -73,6 +74,12 @@ Route::group(['middleware' => ['role:docente|escolares']], function () {
     Route::get('/escolares/planes_estudio/materia/{id}', [MateriaPlanEstudioController::class, 'getMateriasPlan'])->name('escolaresMateriaPlanEstudio');
     Route::post('/escolares/periodo/create/{idPlan}', [MateriaPlanEstudioController::class, 'createMateriaPlanEstudio'])->name('materiaPlanEstudioCreate');
     Route::delete('/escolares/periodo/delete/{idPlan}/{idMateria}', [MateriaPlanEstudioController::class, 'deleteMateriaPlanEstudio'])->name('materiaPlanEstudioDelete');
+
+     // ------------------------- MATERIAS POR PLAN DE ESTUDIO -------------------------
+    Route::get('/escolares/planes_estudio/grupo/{id}', [GrupoController::class, 'getGrupo'])->name('escolaresGrupo');
+    Route::post('/escolares/planes_estudio/grupo/create/{idPlan}', [GrupoController::class, 'createGrupo'])->name('grupoCreate');
+    Route::patch('/escolares/planes_estudio/grupo/editar/{idPlan}/{idGrupo}', [GrupoController::class, 'updateGrupo'])->name('grupoUpdate');
+    Route::delete('/escolares/planes_estudio/grupo/delete/{idPlan}/{idMateria}', [GrupoController::class, 'deleteGrupo'])->name('grupoDelete');
 });
 
 Route::group(['middleware' => ['role:div_estudios|escolares']], function () {

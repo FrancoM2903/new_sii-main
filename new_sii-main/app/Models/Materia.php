@@ -21,4 +21,8 @@ class Materia extends Model
     public function planesEstudio () {
         return $this->belongsToMany(PlanEstudio::class);
     }
+
+    public function grupos(){
+        return $this->hasMany(Grupo::class);
+    }
 }
