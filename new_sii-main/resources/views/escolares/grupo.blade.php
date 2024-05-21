@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 @section('content')
     <div class="box">
-        <p class="title is-3 has-text-centered">Materias de {{ $planEstudio->carrera }}</p>
+        <p class="title is-3 has-text-centered">Grupos de {{ $planEstudio->carrera }}</p>
         
         <div class="buttons">
             <a href="{{route('escolaresPlanesEstudio')}}" class="button is-danger">
@@ -87,9 +87,11 @@
                                             <div class="select">
                                                 <select name="selectPeriGrupoUp">
                                                     @foreach ($periodos as $periodo)
-                                                        <option value="{{ $periodo->id }}">
-                                                            {{ $periodo->nombre_periodo }}
-                                                        </option>
+                                                        @if ($periodo->estatus != 'cerrado')
+                                                            <option value="{{ $periodo->id }}">
+                                                                {{ $periodo->nombre_periodo }}
+                                                            </option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>                
@@ -180,9 +182,11 @@
                                     <select name="selectPeriGrupo">
                                         <option value="">Seleccionar</option>
                                         @foreach ($periodos as $periodo)
-                                            <option value="{{ $periodo->id }}">
-                                                {{ $periodo->nombre_periodo }}
-                                            </option>
+                                            @if ($periodo->estatus != 'Cerrado')
+                                                <option value="{{ $periodo->id }}">
+                                                    {{ $periodo->nombre_periodo }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>                
