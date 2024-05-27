@@ -24,7 +24,7 @@ class GrupoController extends Controller
         $periodos = Periodo::all();
         $materias = Materia::all();
         $docentes = Docente::all();
-        return view('escolares.grupo', compact('grupos', 'planEstudio','periodos','materias','docentes'));
+        return view('divEstudio.grupo', compact('grupos', 'planEstudio','periodos','materias','docentes'));
     }
 
     public function createGrupo(Request $request, $idPlan) {

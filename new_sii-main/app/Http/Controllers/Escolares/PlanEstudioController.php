@@ -20,7 +20,7 @@ class PlanEstudioController extends Controller
     {
         $planes = PlanEstudio::all();
         $especialidades = Especialidad::all();
-        return view('escolares.planes-estudio', compact('planes','especialidades'));
+        return view('divEstudio.planes-estudio', compact('planes','especialidades'));
     }
 
     public function updatePlanEstudio(Request $request, $id)

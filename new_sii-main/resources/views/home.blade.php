@@ -20,13 +20,6 @@
                         <a  class="button is-info" href="{{route('escolaresDocente')}}">Acceder</a>
                     </div>
                 </div>
-                {{-- <div class="column is-4-desktop is-6-mobile">
-                    <div class="box">
-                        <h1 class="title is-6 "><i class="fa-solid fa-people-roof"></i> Grupos</h1>
-                        <p>Ver, crear, editar grupos</p><br>
-                        <a  class="button is-info" href="#">Acceder</a>
-                    </div>
-                </div> --}}
                 <div class="column is-4-desktop is-6-mobile">
                     <div class="box">
                         <h1 class="title is-6 "><i class="fa-solid fa-building"></i> Edificios y Salones</h1>
@@ -43,7 +36,7 @@
                 </div>
             @endhasrole
 
-            @hasanyrole('div_estudios|escolares')
+            @hasanyrole('div_estudios')
                 <div class="column is-4-desktop is-6-mobile">
                     <div class="box">
                         <h1 class="title is-6 "><i class="fa-solid fa-book-open"></i> Materias</h1>
@@ -51,10 +44,6 @@
                         <a  class="button is-info" href="{{route('escolaresMaterias')}}">Acceder</a>
                     </div>
                 </div>
-            @endhasrole
-
-            @hasanyrole('docente|escolares')
-                
                 <div class="column is-4-desktop is-6-mobile">
                     <div class="box">
                         <h1 class="title is-6 "><i class="fa-solid fa-address-card"></i> Planes de estudio y Especialidades</h1>
@@ -63,9 +52,34 @@
                     </div>
                 </div>
             @endhasrole
-            @hasrole('alumno')
-                <h1 class="title is-6">No tienes acceso a nada ajajsjas</h1>
+
+            @hasanyrole('docente') 
+                <div class="column is-4-desktop is-6-mobile">
+                    <div class="box">
+                        <h1 class="title is-6 "><i class="fa-solid fa-book-open"></i> Listas</h1>
+                        <p>Ver lista de grupos</p><br>
+                        <a  class="button is-info" href="{{--route('escolaresMaterias')--}}#">Acceder</a>
+                    </div>
+                </div>
+                <div class="column is-4-desktop is-6-mobile">
+                    <div class="box">
+                        <h1 class="title is-6 "><i class="fa-solid fa-address-card"></i> Calificaciones</h1>
+                        <p>Subir calificaciones</p><br>
+                        <a  class="button is-info" href="#{{--route('escolaresPlanesEstudio')--}}">Acceder</a>
+                    </div>
+                </div>
             @endhasrole
+
+            @hasrole('alumno')
+                <div class="column is-4-desktop is-6-mobile">
+                    <div class="box">
+                        <h1 class="title is-6 "><i class="fa-solid fa-address-card"></i> Materias inscritas</h1>
+                        <p>Ver materias</p><br>
+                        <a  class="button is-info" href="#{{--route('escolaresPlanesEstudio')--}}">Acceder</a>
+                    </div>
+                </div>
+            @endhasrole
+            
         </div>
     </div>
 @endsection

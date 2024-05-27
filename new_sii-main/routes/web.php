@@ -58,7 +58,11 @@ Route::group(['middleware' => ['role:escolares']], function () {
 });
 
 Route::group(['middleware' => ['role:docente|escolares']], function () {
-    // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
+   
+});
+
+Route::group(['middleware' => ['role:div_estudios']], function () {
+     // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
     // ------------------------- PLANES DE ESTUDIO -------------------------
     Route::get('/escolares/planes_estudio', [PlanEstudioController::class, 'index'])->name('escolaresPlanesEstudio');
     Route::patch('/escolares/planes_estudio/editar/{id}', [PlanEstudioController::class, 'updatePlanEstudio'])->name('planEstudioUpdate');
@@ -75,14 +79,12 @@ Route::group(['middleware' => ['role:docente|escolares']], function () {
     Route::post('/escolares/periodo/create/{idPlan}', [MateriaPlanEstudioController::class, 'createMateriaPlanEstudio'])->name('materiaPlanEstudioCreate');
     Route::delete('/escolares/periodo/delete/{idPlan}/{idMateria}', [MateriaPlanEstudioController::class, 'deleteMateriaPlanEstudio'])->name('materiaPlanEstudioDelete');
 
-     // ------------------------- MATERIAS POR PLAN DE ESTUDIO -------------------------
+     // ------------------------- GRUPOS POR PLAN DE ESTUDIO -------------------------
     Route::get('/escolares/planes_estudio/grupo/{id}', [GrupoController::class, 'getGrupo'])->name('escolaresGrupo');
     Route::post('/escolares/planes_estudio/grupo/create/{idPlan}', [GrupoController::class, 'createGrupo'])->name('grupoCreate');
     Route::patch('/escolares/planes_estudio/grupo/editar/{idPlan}/{idGrupo}', [GrupoController::class, 'updateGrupo'])->name('grupoUpdate');
     Route::delete('/escolares/planes_estudio/grupo/delete/{idPlan}/{idMateria}', [GrupoController::class, 'deleteGrupo'])->name('grupoDelete');
-});
-
-Route::group(['middleware' => ['role:div_estudios|escolares']], function () {
+    
     // ------------------------- MATERIAS -------------------------
     Route::get('/escolares/materia', [MateriaController::class, 'getMaterias'])->name('escolaresMaterias');
     Route::post('/escolares/materia/create', [MateriaController::class, 'createMateria'])->name('materiaCreate');

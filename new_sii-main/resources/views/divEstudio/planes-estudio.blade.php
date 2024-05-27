@@ -46,18 +46,18 @@
                                     <td>{{ $item->carrera }}</td>
                                     <td>
                                         <div class="field is-grouped">
-                                            @hasrole('escolares')
-                                                <button class="button is-warning js-modal-trigger" data-target="modal-{{ $item->id }}">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                            
+                                            <button class="button is-warning js-modal-trigger" data-target="modal-{{ $item->id }}">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <form action="{{ route('PlanesEstudioEliminar', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este plan de estudios?')">
+                                                    <i class="fa-solid fa-trash-can"></i>
                                                 </button>
-                                                <form action="{{ route('PlanesEstudioEliminar', $item->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este plan de estudios?')">
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                    </button>
-                                                </form>
-                                            @endhasrole
+                                            </form>
+                                            
                                             <form action="{{ route('escolaresMateriaPlanEstudio', $item->id) }}" method="GET">
                                                 <button type="submit" class="button is-info" title="Ver Materias">
                                                     <i class="fa-solid fa-book"></i>

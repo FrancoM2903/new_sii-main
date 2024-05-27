@@ -15,7 +15,7 @@ class MateriaController extends Controller {
 
     public function getMaterias() {
         $materias = Materia::all();
-        return view('escolares.materia', compact('materias'));
+        return view('divEstudio.materia', compact('materias'));
     }
 
     public function createMateria(Request $request) {

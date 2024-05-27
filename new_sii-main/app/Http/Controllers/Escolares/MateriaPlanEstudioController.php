@@ -19,7 +19,7 @@ class MateriaPlanEstudioController extends Controller
         //return $planEstudio;
         //return $planEstudio->materias;
         $materias = Materia::all();
-        return view('escolares.materia-plan-estudio', compact('materias', 'planEstudio'));
+        return view('divEstudio.materia-plan-estudio', compact('materias', 'planEstudio'));
     }
 
     public function createMateriaPlanEstudio(Request $request, $idPlan) {
