@@ -5,7 +5,7 @@
         <p class="title is-5 has-text-centered">Grupos asignados</p>
         
         <div class="buttons">
-            <a href="{{route('escolaresPlanesEstudio')}}" class="button is-danger">
+            <a href="{{route('home')}}" class="button is-danger">
                 <i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar
             </a>
         </div>
@@ -42,7 +42,7 @@
                         <td>{{ $grupo->semestre.$grupo->letra_grupo }}</td>
                         <td> {{-- botones --}}
                             <div class="field is-grouped has-text-centered">
-                                <form action="{{ route('docenteGruposDocenteAlumno', $docente->id) }}#" method="GET">
+                                <form action="{{ route('docenteGruposDocenteAlumno', $grupo->id) }}" method="GET">
                                     <button type="submit" class="button is-info" title="Listas">
                                         <i class="fa-solid fa-list"></i>
                                     </button>

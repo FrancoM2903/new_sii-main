@@ -13,7 +13,7 @@
         </p>
         
         <div class="buttons">
-            <a href="{{--route('escolaresPlanesEstudio')--}}#" class="button is-danger">
+            <a href="{{route('docenteGruposDocente',Auth::user()->docente->id)}}" class="button is-danger">
                 <i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar
             </a>
         </div>
