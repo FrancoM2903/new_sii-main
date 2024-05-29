@@ -62,6 +62,11 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
+                                <form action="{{ route('divEstAlumGrupo', $grupo->id) }}#" method="GET">
+                                    <button type="submit" class="button is-info" title="Listas">
+                                        <i class="fa-solid fa-list"></i>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>

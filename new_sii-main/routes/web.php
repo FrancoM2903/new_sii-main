@@ -13,6 +13,7 @@ use App\Http\Controllers\Escolares\MateriaController;
 use App\Http\Controllers\Escolares\PeriodoController;
 use App\Http\Controllers\Escolares\GrupoController;
 use App\Http\Controllers\Escolares\MateriaPlanEstudioController;
+use App\Http\Controllers\Escolares\AlumnoGrupoController;
 
 Auth::routes();
 
@@ -57,12 +58,20 @@ Route::group(['middleware' => ['role:escolares']], function () {
 
 });
 
-Route::group(['middleware' => ['role:docente|escolares']], function () {
+Route::group(['middleware' => ['role:docente']], function () {
+    Route::get('/docente/grupo/{id}',[GrupoController::class, 'getGruposDocente'])->name('docenteGruposDocente');
+    Route::get('/docente/grupo/Alumno/{id}', [AlumnoGrupoController::class, 'getDocenteAlumnoGrupo'])->name('docenteGruposDocenteAlumno');
    
 });
 
 Route::group(['middleware' => ['role:div_estudios']], function () {
-     // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
+    // ************************************************** MATERIAS **************************************************
+     Route::get('/escolares/materia', [MateriaController::class, 'getMaterias'])->name('escolaresMaterias');
+     Route::post('/escolares/materia/create', [MateriaController::class, 'createMateria'])->name('materiaCreate');
+     Route::patch('/escolares/materia/editar/{id}', [MateriaController::class, 'updateMateria'])->name('materiaUpdate');
+     Route::delete('/escolares/materia/delete/{id}', [MateriaController::class, 'deleteMateria'])->name('materiaDelete');
+
+    // ****************** PLAN DE ESTUDIOS Y ESPECIALIDADES******************
     // ------------------------- PLANES DE ESTUDIO -------------------------
     Route::get('/escolares/planes_estudio', [PlanEstudioController::class, 'index'])->name('escolaresPlanesEstudio');
     Route::patch('/escolares/planes_estudio/editar/{id}', [PlanEstudioController::class, 'updatePlanEstudio'])->name('planEstudioUpdate');
@@ -80,15 +89,19 @@ Route::group(['middleware' => ['role:div_estudios']], function () {
     Route::delete('/escolares/periodo/delete/{idPlan}/{idMateria}', [MateriaPlanEstudioController::class, 'deleteMateriaPlanEstudio'])->name('materiaPlanEstudioDelete');
 
      // ------------------------- GRUPOS POR PLAN DE ESTUDIO -------------------------
-    Route::get('/escolares/planes_estudio/grupo/{id}', [GrupoController::class, 'getGrupo'])->name('escolaresGrupo');
-    Route::post('/escolares/planes_estudio/grupo/create/{idPlan}', [GrupoController::class, 'createGrupo'])->name('grupoCreate');
-    Route::patch('/escolares/planes_estudio/grupo/editar/{idPlan}/{idGrupo}', [GrupoController::class, 'updateGrupo'])->name('grupoUpdate');
-    Route::delete('/escolares/planes_estudio/grupo/delete/{idPlan}/{idMateria}', [GrupoController::class, 'deleteGrupo'])->name('grupoDelete');
-    
-    // ------------------------- MATERIAS -------------------------
-    Route::get('/escolares/materia', [MateriaController::class, 'getMaterias'])->name('escolaresMaterias');
-    Route::post('/escolares/materia/create', [MateriaController::class, 'createMateria'])->name('materiaCreate');
-    Route::patch('/escolares/materia/editar/{id}', [MateriaController::class, 'updateMateria'])->name('materiaUpdate');
-    Route::delete('/escolares/materia/delete/{id}', [MateriaController::class, 'deleteMateria'])->name('materiaDelete');
+    Route::get('/div_estudios/planes_estudio/grupo/{id}', [GrupoController::class, 'getGrupo'])->name('escolaresGrupo');
+    Route::post('/div_estudios/planes_estudio/grupo/create/{idPlan}', [GrupoController::class, 'createGrupo'])->name('grupoCreate');
+    Route::patch('/div_estudios/planes_estudio/grupo/editar/{idPlan}/{idGrupo}', [GrupoController::class, 'updateGrupo'])->name('grupoUpdate');
+    Route::delete('/div_estudios/planes_estudio/grupo/delete/{idPlan}/{idMateria}', [GrupoController::class, 'deleteGrupo'])->name('grupoDelete');
+
+     // ------------------------- ALUMNOS POR GRUPOS -------------------------
+    Route::get('/div_estudios/planes_estudio/materia/{id}', [AlumnoGrupoController::class, 'getAlumnoGrupo'])->name('divEstAlumGrupo');
+    Route::post('/div_estudios/planes_estudio/create/{idGrupo}', [AlumnoGrupoController::class, 'createAlumnoGrupo'])->name('alumnoGrupoCreate');
+    Route::delete('/div_estudios/planes_estudio/delete/{idGrupo}/{idAlumno}', [AlumnoGrupoController::class, 'deleteAlumnoGrupo'])->name('alumnoGrupoDelete');
+
 });
 
+
+Route::group(['middleware' => ['role:alumno']], function () {
+    Route::get('/alumno/grupo/{id}',[GrupoController::class, 'getGruposAlumnos'])->name('alumnoGruposAlumno');
+});

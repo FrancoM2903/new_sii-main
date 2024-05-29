@@ -39,4 +39,8 @@ class Grupo extends Model {
         return $this->belongsTo(Docente::class);
     }
 
+    public function alumno() {
+        return $this->belongsToMany(Alumno::class);
+    }
+
 }

@@ -16,8 +16,6 @@ class MateriaPlanEstudioController extends Controller
 
     public function getMateriasPlan($id) {
         $planEstudio = PlanEstudio::find($id);
-        //return $planEstudio;
-        //return $planEstudio->materias;
         $materias = Materia::all();
         return view('divEstudio.materia-plan-estudio', compact('materias', 'planEstudio'));
     }

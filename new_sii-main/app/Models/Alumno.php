@@ -12,6 +12,19 @@ class Alumno extends Model
 
     protected $table = 'alumnos';
 
+    protected $fillable = [
+        'numero_control',
+        'nombre',
+        'ap_paterno',
+        'ap_materno',
+        'curp',
+        'semestre',
+        'plan_estudio_id',
+        'user_id',
+        'estatus_id',
+        'tipo_alumno_id',
+    ];
+
     public function planEstudio() {
         return $this->belongsTo(PlanEstudio::class);
     }
@@ -26,5 +39,9 @@ class Alumno extends Model
 
     public function tipoAlumno(){
         return $this->belongsTo(TiposAlumno::class);
+    }
+
+    public function grupo() {
+        return $this->belongsToMany(Grupo::class);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Periodo;
 use App\Models\PlanEstudio;
 use App\Models\Materia;
 use App\Models\Docente;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -114,5 +115,17 @@ class GrupoController extends Controller
             // Cualquier  error
             return back()->with("Incorrecto", "Error al eliminar la materia");
         }
+    }
+
+    // ********************************** VISTAS DE LISTAS **********************************
+
+    public function getGruposDocente($id){
+        $docente = Docente::find($id);
+        return view('docente.lista-grupo-docente', compact('docente'));
+    }
+
+    public function getGruposAlumnos($id){
+        $alumno = Alumno::find($id);
+        return view('alumno.lista-grupo-alumno', compact('alumno'));
     }
 }

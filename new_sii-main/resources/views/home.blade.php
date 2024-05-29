@@ -58,7 +58,7 @@
                     <div class="box">
                         <h1 class="title is-6 "><i class="fa-solid fa-book-open"></i> Listas</h1>
                         <p>Ver lista de grupos</p><br>
-                        <a  class="button is-info" href="{{--route('escolaresMaterias')--}}#">Acceder</a>
+                        <a  class="button is-info" href="{{route('docenteGruposDocente',Auth::user()->docente->id)}}">Acceder</a>
                     </div>
                 </div>
                 <div class="column is-4-desktop is-6-mobile">
@@ -75,7 +75,7 @@
                     <div class="box">
                         <h1 class="title is-6 "><i class="fa-solid fa-address-card"></i> Materias inscritas</h1>
                         <p>Ver materias</p><br>
-                        <a  class="button is-info" href="#{{--route('escolaresPlanesEstudio')--}}">Acceder</a>
+                        <a  class="button is-info" href="{{route('alumnoGruposAlumno', Auth::user()->alumno->id)}}">Acceder</a>
                     </div>
                 </div>
             @endhasrole
